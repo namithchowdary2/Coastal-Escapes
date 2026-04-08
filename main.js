@@ -1,3 +1,19 @@
+const EMAILJS_CONFIG = {
+  CONTACT: {
+    SERVICE_ID: 'service_4i458lr',
+    TEMPLATE_STAFF: 'template_9fgi826',
+    TEMPLATE_AUTO: 'template_m4m09pa',
+    PUBLIC_KEY: 'BUVqjnMW8-ZT5z0T4'
+  },
+  FEEDBACK: {
+    SERVICE_ID: 'service_jzj4sib',
+    TEMPLATE: 'template_svz49zm',
+    PUBLIC_KEY: 'c9Mkpbq0FBqSTWdj7'
+  }
+};
+
+// Global initialization is not needed as we pass keys explicitly during send
+
 const content = {
   home: {
     hero: {
@@ -5,6 +21,13 @@ const content = {
       subtitle: "Discover handpicked destinations, luxury stays, and curated travel experiences across India",
       cta: "Book Your Escape",
       bg: "/assets/hero.png"
+    },
+    about: {
+      title: "Namith Chowdary",
+      subtitle: "Founder & Lead Explorer",
+      bio: "Coastal Escapes was born from a passion for discovering the hidden soul of India. As a lifestyle explorer and storyteller, I believe that travel is more than just visiting a place—it's about the pulse of the destination, the culture, and the memories that linger long after the journey ends. Join me as we explore the sun-kissed coasts and majestic mountains of our beautiful nation.",
+      image: "/assets/namith.png",
+      signature: "Namith Chowdary"
     },
     seo: "Explore the best travel booking platform for hotels in Goa and customized tour packages in India. Coastal Escapes helps travelers find affordable hotels in Goa, premium resorts, and curated travel experiences.",
     featured: [
@@ -158,13 +181,113 @@ const content = {
   }
 };
 
-// EmailJS Credentials
-const EMAILJS_CONFIG = {
-  SERVICE_ID: 'service_4i458lr',
-  TEMPLATE_STAFF: 'template_9fgi826',
-  TEMPLATE_USER: 'template_m4m09pa',
-  PUBLIC_KEY: 'BUVqjnMW8-ZT5z0T4'
+// Local AI Knowledge Base for Coastal Escapes
+const AI_KNOWLEDGE = {
+  greetings: {
+    en: [
+      "Hello! I am your premium Coastal Escapes travel assistant. How may I plan your perfect getaway today?",
+      "Welcome to Coastal Escapes! I'm here to help you discover India's best destinations. What's on your travel bucket list?",
+      "Namaste! I am your AI travel concierge. Ready to explore luxury stays and tour packages?"
+    ],
+    hi: [
+      "नमस्ते! मैं आपका कोस्टल एस्केप्स ट्रैवल असिस्टेंट हूँ। मैं आपकी यात्रा की योजना बनाने में कैसे मदद कर सकता हूँ?",
+      "कोस्टल एस्केप्स में आपका स्वागत है! आपको भारत के बेहतरीन गंतव्यों की खोज करने में मदद करने के लिए मैं यहाँ हूँ।",
+      "नमस्ते! मैं आपका एआई ट्रैवल कंसीयज हूँ। क्या आप लक्जरी स्टे और टूर पैकेज देखने के लिए तैयार हैं?"
+    ],
+    te: [
+      "నమస్కారం! నేను మీ కోస్టల్ ఎస్కేప్స్ ట్రావెల్ అసిస్టెంట్. మీ ప్రయాణాన్ని ప్లాన్ చేయడంలో నేను మీకు ఎలా సహాయపడగలను?",
+      "కోస్టల్ ఎస్కేప్స్ కు స్వాగతం! భారతదేశంలోని ఉత్తమ పర్యాటక ప్రాంతాలను కనుగొనడంలో మీకు సహాయపడటానికి నేను ఇక్కడ ఉన్నాను.",
+      "నమస్కారం! లగ్జరీ స్టేలు మరియు టూర్ ప్యాకేజీలను అన్వేషించడానికి సిద్ధంగా ఉన్నారా?"
+    ]
+  },
+  nav_contact: {
+    patterns: ["contact", "email", "phone", "address", "call", "reach", "office", "talk to human", "संपर्क", "फोन", "पता", "కాంటాక్ట్", "ఫోన్", "చిరునామా"],
+    responses: {
+      en: "I'd be happy to help you connect with our team! I'm navigating you to our Contact section now...",
+      hi: "मुझे आपको हमारी टीम से जोड़ने में खुशी होगी! मैं अब आपको हमारे संपर्क अनुभाग (Contact Section) पर ले जा रहा हूँ...",
+      te: "మా బృందంతో మిమ్మల్ని కలపడానికి నేను సంతోషిస్తున్నాను! నేను ఇప్పుడు మిమ్మల్ని మా కాంటాక్ట్ విభాగానికి తీసుకువెళుతున్నాను..."
+    },
+    action: "/contact"
+  },
+  nav_feedback: {
+    patterns: ["feedback", "rate", "review", "how was", "experience", "सुझाव", "ప్రశంస", "rating"],
+    responses: {
+      en: "We'd love to hear about your experience! I'm taking you to our premium feedback and rating page.",
+      hi: "हमें आपके अनुभव के बारे में जानकर खुशी होगी! मैं आपको हमारे फीडबैक और रेटिंग पेज पर ले जा रहा हूँ।",
+      te: "మీ అనుభవం గురించి తెలుసుకోవడానికి మేము ఇష్టపడతాము! నేను మిమ్మల్ని మా ఫీడ్‌బ్యాక్ మరియు రేటింగ్ పేజీకి తీసుకువెళుతున్నాను."
+    },
+    action: "/feedback"
+  },
+  nav_hotels: {
+    patterns: ["hotel", "stay", "resort", "room", "accommodation", "booking", "azure palms", "heritage inn", "होटल", "रुकना", "कमरा", "booking", "హోటల్", "స్టే", "రూమ్"],
+    responses: {
+      en: "Looking for a luxurious stay? I'm taking you to our curated list of world-class hotels.",
+      hi: "लक्जरी स्टे की तलाश है? मैं आपको विश्व स्तरीय होटलों की हमारी चुनिंदा सूची पर ले जा रहा हूँ।",
+      te: "లగ్జరీ స్టే కోసం చూస్తున్నారా? ప్రపంచ స్థాయి హోటళ్ల జాబితాకు నేను మిమ్మల్ని తీసుకువెళుతున్నాను."
+    },
+    action: "/hotels"
+  },
+  nav_destinations: {
+    patterns: ["destination", "place", "visit", "goa", "manali", "kerala", "jaipur", "udaipur", "where to go", "जगह", "घूमना", "गोवा", "मनाली", "కేరళ", "గోవా", "మనాలి"],
+    responses: {
+      en: "India has so many breathtaking spots! Let me show you our top travel destinations.",
+      hi: "भारत में बहुत सारे लुभावने स्थान हैं! मैं आपको हमारे प्रमुख यात्रा गंतव्य दिखाता हूँ।",
+      te: "భారతదేశంలో చాలా అద్భుతమైన ప్రాంతాలు ఉన్నాయి! మా టాప్ ట్రావెల్ డెస్టినేషన్లను మీకు చూపిస్తాను."
+    },
+    action: "/destinations"
+  },
+  jokes: {
+    en: [
+      "Why don't some people go on vacation? Because they don't have the 'cents' of adventure!",
+      "I told my suitcase that there will be no vacation this year. Now I'm dealing with emotional baggage.",
+      "Why did the airplane get sent to its room? Because it had a bad altitude!",
+      "Where do sharks go on vacation? Finland!",
+      "What kind of traveler is always the coolest? A 'fan' of the mountains!"
+    ],
+    hi: [
+      "एक बार एक हवाई जहाज ने दूसरे हवाई जहाज से क्या कहा? भाई, तुम्हारा 'एटीट्यूड' (altitude) बहुत खराब है!",
+      "सूटकेस ने अपने मालिक से क्या कहा? मुझे छुट्टियाँ चाहिए, मेरा सामान बहुत भारी (emotional baggage) हो गया है!",
+      "शार्क अपनी छुट्टियाँ मनाने कहाँ जाते हैं? फिनलैंड (Finland)!"
+    ],
+    te: [
+      "విహారయాత్రలకు వెళ్లని వారు ఎందుకు ఉంటారో తెలుసా? వారికి సాహసం చేసే 'సెన్స్' (cents) ఉండదు కాబట్టి!",
+      "ఒక విమానం తన రూమ్ కు ఎందుకు వెళ్ళాల్సి వచ్చింది? దాని ఏటిట్యూడ్ (altitude) బాగోలేదని!",
+      "షార్కులు సెలవులకు ఎక్కడికి వెళ్తాయి? ఫిన్లాండ్ (Finland) కు!"
+    ]
+  },
+  who_are_you: {
+    en: "I am the Coastal Escapes AI Concierge, your local guide to luxury travel in India. I don't need the internet to be smart—I'm built right into this website!",
+    hi: "मैं कोस्टल एस्केप्स एआई कंसीयज हूँ, जो भारत में लक्जरी यात्रा के लिए आपका स्थानीय गाइड है।",
+    te: "నేను కోస్టల్ ఎస్కేప్స్ AI కాన్సియర్జ్ ని, భారతదేశంలో లగ్జరీ ప్రయాణం కోసం మీ లోకల్ గైడ్ ని."
+  },
+  fallback: {
+    en: "That's an interesting question! While I'm specialized in travel planning, you can find more details in our Blog or Contact section.",
+    hi: "यह एक दिलचस्प सवाल है! हालांकि मैं यात्रा योजना में विशेषज्ञ हूँ, आप हमारे ब्लॉग या संपर्क अनुभाग में अधिक विवरण पा सकते हैं।",
+    te: "అది ఆసక్తికరమైన ప్రశ్న! నేను ట్రావెల్ ప్లానింగ్ లో నిపుణుడిని అయినప్పటికీ, మీరు మా బ్లాగ్ లేదా కాంటాక్ట్ విభాగంలో మరిన్ని వివరాలను కనుగొనవచ్చు."
+  }
 };
+
+const PROFANITY_DB = {
+  words: [
+    // English
+    "fuck", "shit", "bitch", "asshole", "dick", "pussy", "bastard",
+    // Hindi (Transliterations & Scripts)
+    "gaali", "behenchod", "madarchod", "chutiya", "harami", "saala", "kamine",
+    "गाली", "बकवास", "हरामी", "कमीने", "साला",
+    // Telugu (Transliterations & Scripts)
+    "lanja", "na kodaka", "dengu", "nee amma", "pooku", "yedava",
+    "లంజ", "నీ అమ్మ", "దెంగు", "పూకు", "యదవ"
+  ],
+  polite_reply: (word, lang = 'en') => {
+    const replies = {
+      en: `At Coastal Escapes, we value decency and professional behavior. The term you used, "<strong>${word}</strong>", is considered disrespectful. Please maintain a polite tone.`,
+      hi: `कोस्टल एस्केप्स में, हम शालीनता और पेशेवर व्यवहार को महत्व देते हैं। आपके द्वारा उपयोग किया गया शब्द "<strong>${word}</strong>" अपमानजनक माना जाता है। कृपया विनम्र लहज़ा बनाए रखें।`,
+      te: `కోస్టల్ ఎస్కేప్స్ లో, మేము గౌరవప్రదమైన ప్రవర్తనకు విలువ ఇస్తాము. మీరు ఉపయోగించిన "<strong>${word}</strong>" పదం గౌరవప్రదమైనది కాదు. దయచేసి మర్యాదగా మాట్లాడండి.`
+    };
+    return replies[lang] || replies.en;
+  }
+};
+
 
 const app = document.getElementById('app');
 // Router function
@@ -182,6 +305,7 @@ function navigate(page) {
     case '/packages': renderPackages(); break;
     case '/blog': renderBlog(); break;
     case '/contact': renderContact(); break;
+    case '/feedback': renderFeedback(); break;
     default: renderHome();
   }
 }
@@ -199,6 +323,7 @@ function renderNavbar() {
         </a>
         <ul class="nav-links nav-list">
           <li><a href="/">Home</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="/destinations">Destinations</a></li>
           <li><a href="/hotels">Hotels</a></li>
           <li><a href="/packages">Packages</a></li>
@@ -225,6 +350,7 @@ function renderFooter() {
               <li><a href="/destinations">Destinations</a></li>
               <li><a href="/hotels">Hotels</a></li>
               <li><a href="/packages">Packages</a></li>
+              <li><a href="/feedback">Give Feedback</a></li>
             </ul>
           </div>
           <div>
@@ -253,6 +379,21 @@ function renderHome() {
         </div>
       </div>
     </header>
+
+    <section class="about-section" id="about">
+      <div class="container about-grid">
+        <div class="about-image-wrap">
+          <img src="${content.home.about.image}" alt="Namith Chowdary">
+        </div>
+        <div class="about-content">
+          <span class="sig-label" style="color: var(--secondary); margin-bottom: 1rem; display: block;">Our Philosophy</span>
+          <h2>The Soul of <br> Coastal Escapes</h2>
+          <p>${content.home.about.bio}</p>
+          <div class="signature">${content.home.about.signature}</div>
+          <p style="font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.6;">Founder, Coastal Escapes</p>
+        </div>
+      </div>
+    </section>
 
     <section class="seo-banner" style="background: var(--bg-card); padding: 4rem 0; border-bottom: 1px solid var(--glass-border);">
       <div class="container" style="max-width: 800px; text-align: center;">
@@ -296,6 +437,7 @@ function renderHome() {
         </div>
       </div>
     </section>
+    ${renderModalContainer()}
     ${renderFooter()}
   `;
   attachListeners();
@@ -543,25 +685,26 @@ function renderContact() {
 
     const templateParams = {
       from_name: name,
-      from_email: email,
       user_name: name,
-      user_email: email,
-      name: name,
-      email: email,
+      email: email,        // General
+      user_email: email,   // Specific
+      to_email: email,     // Often used for auto-replies
+      reply_to: email,     // Important for replies
       message: message,
-      to_email: "hellocoastalescapes@gmail.com"
+      staff_email: "hellocoastalescapes@gmail.com"
     };
 
     // Send notification to staff
-    emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_STAFF, templateParams, EMAILJS_CONFIG.PUBLIC_KEY)
+    emailjs.send(EMAILJS_CONFIG.CONTACT.SERVICE_ID, EMAILJS_CONFIG.CONTACT.TEMPLATE_STAFF, templateParams, EMAILJS_CONFIG.CONTACT.PUBLIC_KEY)
       .then(() => {
-        // Send auto-reply to user
-        return emailjs.send(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_USER, templateParams, EMAILJS_CONFIG.PUBLIC_KEY);
-      })
-      .then(() => {
+        // Success: Show the 'Thank You' message immediately
         form.style.display = 'none';
         feedbackName.innerText = name;
         feedback.style.display = 'block';
+
+        // Background: Send auto-reply to user (don't block UI on error)
+        emailjs.send(EMAILJS_CONFIG.CONTACT.SERVICE_ID, EMAILJS_CONFIG.CONTACT.TEMPLATE_AUTO, templateParams, EMAILJS_CONFIG.CONTACT.PUBLIC_KEY)
+          .catch(err => console.error("Auto-reply configuration check:", err));
       })
       .catch((error) => {
         console.error('EmailJS Debug:', {
@@ -597,3 +740,339 @@ function attachListeners() {
 
 window.addEventListener('popstate', () => navigate(window.location.pathname));
 navigate(window.location.pathname);
+initChatbot();
+
+function initChatbot() {
+  const chatContainer = document.createElement('div');
+  chatContainer.innerHTML = `
+    <button id="chatbot-toggle" class="chat-btn">✦</button>
+    <div id="chatbot-window" class="chat-window">
+      <div class="chat-header">
+        <h3><div class="status-dot"></div> AI Concierge</h3>
+        <button id="chatbot-close" class="close-chat" style="background:none; border:none; color:rgba(255,255,255,0.5); font-size:1.5rem; cursor:pointer;">&times;</button>
+      </div>
+      <div id="chat-messages" class="chat-messages">
+        <div class="chat-msg msg-bot">Hello! I am your premium Coastal Escapes travel assistant. How may I plan your perfect getaway today?</div>
+      </div>
+      <div class="chat-input-area">
+        <button id="btn-voice" class="btn-voice" title="Use Voice Input">🎤</button>
+        <input type="text" id="chat-input" placeholder="Ask me anything..." autocomplete="off">
+        <button id="btn-send-chat" title="Send Message">➤</button>
+      </div>
+      <div id="lang-indicator" style="padding: 0.5rem 2rem; font-size: 0.7rem; color: var(--secondary); opacity: 0.8; background: rgba(0,0,0,0.2);">Detected Language: English</div>
+    </div>
+  `;
+  document.body.appendChild(chatContainer);
+
+  const toggleBtn = document.getElementById('chatbot-toggle');
+  const chatWindow = document.getElementById('chatbot-window');
+  const closeBtn = document.getElementById('chatbot-close');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatInput = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('btn-send-chat');
+  const voiceBtn = document.getElementById('btn-voice');
+
+  let chatHistory = [];
+  let isRecording = false;
+
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const recognition = SpeechRecognition ? new SpeechRecognition() : null;
+
+  if (recognition) {
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      chatInput.value = transcript;
+      sendMessage();
+    };
+
+    recognition.onend = () => {
+      isRecording = false;
+      voiceBtn.classList.remove('listening');
+    };
+  }
+
+  toggleBtn.addEventListener('click', () => chatWindow.classList.add('active'));
+  closeBtn.addEventListener('click', () => chatWindow.classList.remove('active'));
+
+  voiceBtn.addEventListener('click', () => {
+    if (!recognition) {
+      alert("Voice recognition is not supported in this browser.");
+      return;
+    }
+    if (isRecording) {
+      recognition.stop();
+    } else {
+      // Auto-detect language based on previous context or defaults
+      recognition.start();
+      isRecording = true;
+      voiceBtn.classList.add('listening');
+    }
+  });
+
+  sendBtn.addEventListener('click', sendMessage);
+  chatInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+
+    appendMessage(text, 'user');
+    chatInput.value = '';
+    
+    // Show loading for a bit of "thinking" realism
+    const loadingId = appendLoading();
+    
+    setTimeout(() => {
+      removeElement(loadingId);
+      const detection = detectLanguage(text);
+      const response = generateLocalResponse(text, detection);
+      
+      // Update UI lang indicator
+      document.getElementById('lang-indicator').innerText = `Detected Language: ${detection.toUpperCase()}`;
+      
+      appendMessage(response.text, 'bot');
+
+      if (response.action) {
+        setTimeout(() => {
+          navigate(response.action);
+        }, 1500);
+      }
+    }, 800);
+  }
+
+  function detectLanguage(input) {
+    // Basic regex for scripts
+    const hindiRegex = /[\u0900-\u097F]/;
+    const teluguRegex = /[\u0C00-\u0C7F]/;
+    
+    if (hindiRegex.test(input)) return 'hi';
+    if (teluguRegex.test(input)) return 'te';
+    
+    // Check for common keywords in transliteration
+    const lowInput = input.toLowerCase();
+    if (lowInput.includes("namaste") || lowInput.includes("kaise")) return 'hi';
+    if (lowInput.includes("namaskaram") || lowInput.includes("ela unnavu")) return 'te';
+    
+    return 'en';
+  }
+
+  function generateLocalResponse(input, lang = 'en') {
+    const lowerInput = input.toLowerCase();
+
+    // 1. Check Profanity
+    for (const word of PROFANITY_DB.words) {
+      if (lowerInput.includes(word)) {
+        return { text: PROFANITY_DB.polite_reply(word, lang) };
+      }
+    }
+
+    // 2. Check Navigation
+    for (const key in AI_KNOWLEDGE) {
+      if (AI_KNOWLEDGE[key].patterns) {
+        if (AI_KNOWLEDGE[key].patterns.some(p => lowerInput.includes(p))) {
+          const resMap = AI_KNOWLEDGE[key].responses;
+          return { 
+            text: resMap[lang] || resMap['en'],
+            action: AI_KNOWLEDGE[key].action
+          };
+        }
+      }
+    }
+
+    // 3. Check General Queries
+    if (lowerInput.includes("joke") || lowerInput.includes("चुटकुल") || lowerInput.includes("జోక్")) {
+      const jokes = AI_KNOWLEDGE.jokes[lang] || AI_KNOWLEDGE.jokes['en'];
+      return { text: jokes[Math.floor(Math.random() * jokes.length)] };
+    }
+    
+    if (lowerInput.includes("who are you") || lowerInput.includes("नाम") || lowerInput.includes("పేరు")) {
+      return { text: AI_KNOWLEDGE.who_are_you[lang] || AI_KNOWLEDGE.who_are_you['en'] };
+    }
+
+    if (lowerInput.includes("hi") || lowerInput.includes("hello") || lowerInput.includes("नमस्ते") || lowerInput.includes("నమస్తే")) {
+      const greets = AI_KNOWLEDGE.greetings[lang] || AI_KNOWLEDGE.greetings['en'];
+      return { text: greets[Math.floor(Math.random() * greets.length)] };
+    }
+
+    // 4. Fallback
+    return { text: AI_KNOWLEDGE.fallback[lang] || AI_KNOWLEDGE.fallback['en'] };
+  }
+
+  function appendMessage(text, sender) {
+    const msgEl = document.createElement('div');
+    msgEl.classList.add('chat-msg', sender === 'user' ? 'msg-user' : 'msg-bot');
+    
+    let formattedText = text;
+    if (sender === 'bot') {
+        formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                            .replace(/\n/g, '<br>');
+    }
+    
+    msgEl.innerHTML = formattedText;
+    chatMessages.appendChild(msgEl);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function appendLoading() {
+    const id = 'loading-' + Date.now();
+    const msgEl = document.createElement('div');
+    msgEl.id = id;
+    msgEl.classList.add('chat-msg', 'msg-bot', 'loading-dots');
+    msgEl.innerHTML = '<span></span><span></span><span></span>';
+    chatMessages.appendChild(msgEl);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+    return id;
+  }
+
+  function removeElement(id) {
+    const el = document.getElementById(id);
+    if (el) el.remove();
+  }
+}
+function renderFeedback() {
+  app.innerHTML = `
+    ${renderNavbar()}
+    <section class="container" style="padding-top: 10rem; min-height: 80vh;">
+      <h1 class="section-title">Professional Feedback</h1>
+      <p style="text-align: center; color: var(--text-muted); margin: -2rem auto 4rem; max-width: 600px;">
+        Your detailed insights help us refine the Coastal Escapes luxury collection.
+      </p>
+      
+      <div id="feedback-container">
+        <div class="feedback-box">
+          <form id="feedback-form">
+            <div style="text-align: center;">
+              <span class="sig-label">Overall Experience</span>
+              <div class="rating-widget">
+                <!-- 10-Point High-Precision Hybrid System -->
+                ${[5, 4.5, 4, 3.5, 3, 2.5, 2, 1.5, 1, 0.5].map(val => `
+                  <input type="radio" name="rating" id="st${val}" value="${val}" class="star-input" ${val === 5 ? 'required' : ''}>
+                  <label for="st${val}" class="star-label ${val % 1 !== 0 ? 'half' : 'full'}">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z" />
+                    </svg>
+                  </label>
+                `).join('')}
+              </div>
+            </div>
+
+            <div class="sig-input-group">
+              <label class="sig-label">Full Name</label>
+              <input type="text" id="fb-name" placeholder="Enter your name" required class="sig-input">
+            </div>
+
+            <div class="sig-input-group">
+              <label class="sig-label">Email Address</label>
+              <input type="email" id="fb-email" placeholder="email@address.com" required class="sig-input">
+            </div>
+
+            <div class="sig-input-group">
+              <label class="sig-label">Your Feedback</label>
+              <textarea id="fb-message" placeholder="Please share your thoughts on our hotels and packages..." rows="4" required class="sig-input" style="resize: none;"></textarea>
+            </div>
+
+            <button class="sig-button" type="submit" style="width: 100%;">SUBMIT FEEDBACK</button>
+          </form>
+        </div>
+      </div>
+
+      <div id="fb-success-root" style="display: none;" class="bloom-container">
+        <div class="bloom-text">
+          Thank U For Your <br> Valuable Feedback
+        </div>
+        <div class="bloom-subtext">
+          We Try To Improve More
+        </div>
+        <a href="/" class="btn" style="margin-top: 3rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 1rem 3rem;">Return Home</a>
+      </div>
+    </section>
+    ${renderFooter()}
+  `;
+  attachListeners();
+  
+  const form = document.getElementById('feedback-form');
+  const container = document.getElementById('feedback-container');
+  const successRoot = document.getElementById('fb-success-root');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // OPTIMISTIC UI: Show success instantly
+    container.style.opacity = '0';
+    setTimeout(() => {
+      container.style.display = 'none';
+      successRoot.style.display = 'flex';
+    }, 400);
+
+    const rating = form.querySelector('input[name="rating"]:checked').value;
+    const name = document.getElementById('fb-name').value;
+    const email = document.getElementById('fb-email').value;
+    const message = document.getElementById('fb-message').value;
+
+    const templateParams = {
+      from_name: name,
+      user_email: email,
+      rating: rating,
+      message: message,
+      subject: `[Professional Feedback] ${rating}/5 Stars`,
+      to_email: "hellocoastalescapes@gmail.com"
+    };
+
+    emailjs.send(EMAILJS_CONFIG.FEEDBACK.SERVICE_ID, EMAILJS_CONFIG.FEEDBACK.TEMPLATE, templateParams, EMAILJS_CONFIG.FEEDBACK.PUBLIC_KEY)
+      .then(res => console.log("Feedback Sent Successfully:", res))
+      .catch(err => console.error("EmailJS Sync failed:", err));
+  });
+}
+
+function initProactiveFeedback() {
+  const toast = document.createElement('div');
+  toast.className = 'proactive-toast';
+  toast.id = 'proactive-feedback';
+  toast.innerHTML = `
+    <div style="font-size: 2rem;">✨</div>
+    <div style="flex-grow: 1;">
+      <h4 style="margin: 0; color: white;">Share Your Experience</h4>
+      <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">How was your trip? Rate our service.</p>
+    </div>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <button id="btn-rate-now" 
+              style="background: var(--secondary); color: #000; border: none; padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: 700; cursor: pointer; white-space: nowrap; transition: transform 0.2s;">
+        Rate Us
+      </button>
+      <button id="btn-toast-close" 
+              style="background: none; border: none; color: white; cursor: pointer; font-size: 1.5rem; opacity: 0.5;">&times;</button>
+    </div>
+  `;
+  document.body.appendChild(toast);
+
+  const rateBtn = document.getElementById('btn-rate-now');
+  const closeBtn = document.getElementById('btn-toast-close');
+
+  rateBtn.addEventListener('click', () => {
+    window.navigate('/feedback');
+    toast.classList.remove('active');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    toast.classList.remove('active');
+  });
+
+  // Trigger immediately as the site opens
+  setTimeout(() => {
+    if (window.location.pathname !== '/feedback') {
+      toast.classList.add('active');
+    }
+  }, 100);
+}
+
+// Make navigate globally accessible
+window.navigate = navigate;
+
+// Call proactive init
+initProactiveFeedback();

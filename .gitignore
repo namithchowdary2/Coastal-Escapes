@@ -6,3 +6,27 @@ dist/
 .gemini/
 *.log
 qr.jpg
+
+# Documents and Reports
+*.pdf
+*.doc
+*.docx
+*.pptx
+*.html
+!index.html
+
+# Screenshots and Asset materials
+Screenshot*
+images/
+seo_report_screenshots/
+extracted_images/
+pdf_page_2.png
+lpu_logo.png
+lpu_logo.svg
+
+# Scripts and temp files
+*.py
+*.cjs
+*.txt
+*.md
+!README.md
