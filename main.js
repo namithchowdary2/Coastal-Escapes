@@ -11,29 +11,26 @@ const EMAILJS_CONFIG = {
     PUBLIC_KEY: 'c9Mkpbq0FBqSTWdj7'
   }
 };
-
-// Global initialization is not needed as we pass keys explicitly during send
-
 const content = {
   home: {
     hero: {
       title: "Escape to the Extraordinary",
       subtitle: "Discover handpicked destinations, luxury stays, and curated travel experiences across India",
       cta: "Book Your Escape",
-      bg: "/assets/hero.png"
+      bg: "/assets/hero.webp"
     },
     about: {
       title: "Namith Chowdary",
       subtitle: "Founder & Lead Explorer",
       bio: "Coastal Escapes was born from a passion for discovering the hidden soul of India. As a lifestyle explorer and storyteller, I believe that travel is more than just visiting a place—it's about the pulse of the destination, the culture, and the memories that linger long after the journey ends. Join me as we explore the sun-kissed coasts and majestic mountains of our beautiful nation.",
-      image: "/assets/professional_founder.png",
+      image: "/assets/professional_founder.webp",
       signature: "Namith Chowdary"
     },
     seo: "Explore the best travel booking platform for hotels in Goa and customized tour packages in India. Coastal Escapes helps travelers find affordable hotels in Goa, premium resorts, and curated travel experiences.",
     featured: [
-      { id: "goa", name: "Goa", desc: "Beaches, nightlife, relaxation", bg: "/assets/goa.png", link: "Explore Goa and check our Hotels in Goa page for the best stays." },
-      { id: "manali", name: "Manali", desc: "Mountains, adventure, snow", bg: "/assets/manali.png" },
-      { id: "kerala", name: "Kerala", desc: "Backwaters, nature, wellness", bg: "/assets/kerala.png" },
+      { id: "goa", name: "Goa", desc: "Beaches, nightlife, relaxation", bg: "/assets/goa.webp", link: "Explore Goa and check our Hotels in Goa page for the best stays." },
+      { id: "manali", name: "Manali", desc: "Mountains, adventure, snow", bg: "/assets/manali.webp" },
+      { id: "kerala", name: "Kerala", desc: "Backwaters, nature, wellness", bg: "/assets/kerala.webp" },
       { id: "jaipur", name: "Jaipur", desc: "Heritage, culture, royalty", bg: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?q=80&w=800" }
     ]
   },
@@ -46,7 +43,7 @@ const content = {
         desc: "Famous for its 100km coastline, from buzzing Baga to soulful Agonda.", 
         highlight: "UNESCO Heritage churches, spice plantations, vibrant night markets, and world-class water sports.",
         appeal: "Ideal for those seeking a mix of relaxation, culture, and high-energy nightlife.",
-        bg: "/assets/goa.png" 
+        bg: "/assets/goa.webp" 
       },
       { 
         id: "manali",
@@ -54,7 +51,7 @@ const content = {
         desc: "Gateway to the high Himalayas, find peace in the heart of the Beas River Valley.", 
         highlight: "Rohtang Pass, Hadimba Devi Temple, paragliding in Solang, and the charming cafes of Old Manali.",
         appeal: "Perfect for honeymooners, adventure enthusiasts, and families looking for a cool retreat.",
-        bg: "/assets/manali.png" 
+        bg: "/assets/manali.webp" 
       },
       { 
         id: "kerala",
@@ -62,7 +59,7 @@ const content = {
         desc: "A tropical paradise known for its unique culture and stunning natural beauty.", 
         highlight: "Munnar tea gardens, Thekkady wildlife sanctuary, and the iconic Alleppey houseboats.",
         appeal: "The ultimate destination for wellness, nature lovers, and peaceful family gatherings.",
-        bg: "/assets/kerala.png" 
+        bg: "/assets/kerala.webp" 
       },
       { 
         id: "jaipur",
@@ -92,7 +89,7 @@ const content = {
         price: "₹7,500 – ₹12,000", 
         desc: "A stunning beachfront property in South Goa with private beach access and an infinity pool.", 
         features: ["Private Balconies", "Spa & Wellness", "Multi-cuisine Dining", "Free Wi-Fi"],
-        bg: "/assets/hotel_luxury.png",
+        bg: "/assets/hotel_luxury.webp",
         rates: { standard: "₹7,500", deluxe: "₹10,500", villa: "₹15,000" },
         menu: ["Floating Breakfast", "Seafood Grill", "Ayurvedic Massage", "Sunset Cruise"]
       },
@@ -122,7 +119,7 @@ const content = {
     title: "Tour Packages",
     items: [
       { name: "Goa Package", duration: "3 Days / 2 Nights", price: "₹9,999 per person", inc: "Hotel + Sightseeing", bg: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=600" },
-      { name: "Manali Package", duration: "5 Days / 4 Nights", price: "₹18,500 per person", inc: "Transport + Hotel", bg: "/assets/manali.png" }
+      { name: "Manali Package", duration: "5 Days / 4 Nights", price: "₹18,500 per person", inc: "Transport + Hotel", bg: "/assets/manali.webp" }
     ]
   },
   blog: {
@@ -132,7 +129,7 @@ const content = {
         id: "goa-gems",
         title: "Top 10 Hidden Gems to Visit in Goa", 
         summary: "Beyond the crowded beaches lie secret caves and silent shores.", 
-        bg: "/assets/goa.png",
+        bg: "/assets/goa.webp",
         content: `
           <p>Goa is often synonymous with Baga, Calangute, and the pulsing nightlife of the North. But for the discerning traveler, the true magic of the sun-kissed state lies in its "hidden" corners. From the mysterious Arvalem Caves to the secluded Butterfly Beach, there's a side of Goa that remains untouched by mass tourism.</p>
           <br>
@@ -166,7 +163,7 @@ const content = {
         id: "manali-timing",
         title: "Best Time to Visit Manali: A Seasonal Guide", 
         summary: "From snowy winters to blooming summers, choose your perfect season.", 
-        bg: "/assets/manali.png",
+        bg: "/assets/manali.webp",
         content: `
           <p>Experience the magic of the mountains across the year!</p>
         `,
@@ -180,8 +177,6 @@ const content = {
     address: "Kakatiya Street 507, Mandapeta, Andhra Pradesh, 533308, India"
   }
 };
-
-// Local AI Knowledge Base for Coastal Escapes
 const AI_KNOWLEDGE = {
   greetings: {
     en: [
@@ -266,15 +261,11 @@ const AI_KNOWLEDGE = {
     te: "అది ఆసక్తికరమైన ప్రశ్న! నేను ట్రావెల్ ప్లానింగ్ లో నిపుణుడిని అయినప్పటికీ, మీరు మా బ్లాగ్ లేదా కాంటాక్ట్ విభాగంలో మరిన్ని వివరాలను కనుగొనవచ్చు."
   }
 };
-
 const PROFANITY_DB = {
   words: [
-    // English
     "fuck", "shit", "bitch", "asshole", "dick", "pussy", "bastard",
-    // Hindi (Transliterations & Scripts)
     "gaali", "behenchod", "madarchod", "chutiya", "harami", "saala", "kamine",
     "गाली", "बकवास", "हरामी", "कमीने", "साला",
-    // Telugu (Transliterations & Scripts)
     "lanja", "na kodaka", "dengu", "nee amma", "pooku", "yedava",
     "లంజ", "నీ అమ్మ", "దెంగు", "పూకు", "యదవ"
   ],
@@ -287,10 +278,7 @@ const PROFANITY_DB = {
     return replies[lang] || replies.en;
   }
 };
-
-
 const app = document.getElementById('app');
-// Router function
 function navigate(page) {
   window.scrollTo(0, 0);
   if (page.startsWith('/hotel/')) {
@@ -309,7 +297,6 @@ function navigate(page) {
     default: renderHome();
   }
 }
-
 function renderNavbar() {
   return `
     <nav id="navbar">
@@ -334,7 +321,6 @@ function renderNavbar() {
     </nav>
   `;
 }
-
 function renderFooter() {
   return `
     <footer>
@@ -366,7 +352,6 @@ function renderFooter() {
     </footer>
   `;
 }
-
 function renderHome() {
   app.innerHTML = `
     ${renderNavbar()}
@@ -379,11 +364,10 @@ function renderHome() {
         </div>
       </div>
     </header>
-
     <section class="about-section" id="about">
       <div class="container about-grid">
         <div class="about-image-wrap">
-          <img src="${content.home.about.image}" alt="Namith Chowdary">
+          <img loading="lazy" decoding="async" src="${content.home.about.image}" alt="Namith Chowdary">
         </div>
         <div class="about-content">
           <span class="sig-label" style="color: var(--secondary); margin-bottom: 1rem; display: block;">Our Philosophy</span>
@@ -394,7 +378,6 @@ function renderHome() {
         </div>
       </div>
     </section>
-
     <section class="seo-banner" style="background: var(--bg-card); padding: 4rem 0; border-bottom: 1px solid var(--glass-border);">
       <div class="container" style="max-width: 800px; text-align: center;">
         <h2 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--secondary);">Why Choose Coastal Escapes?</h2>
@@ -403,13 +386,12 @@ function renderHome() {
         </p>
       </div>
     </section>
-
     <section class="container">
       <h2 class="section-title">Featured Destinations</h2>
       <div class="grid">
         ${content.home.featured.map(d => `
           <a href="/destinations" class="card glass">
-            <img src="${d.bg}" alt="${d.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;">
+            <img loading="lazy" decoding="async" src="${d.bg}" alt="${d.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;">
             <h3>${d.name}</h3>
             <p style="color: var(--text-muted); margin: 1rem 0;">${d.desc}</p>
             ${d.link ? `<p style="font-size: 0.9rem; color: var(--secondary); font-weight: 600;">${d.link}</p>` : ''}
@@ -417,7 +399,6 @@ function renderHome() {
         `).join('')}
       </div>
     </section>
-
     <section style="background: var(--glass);">
       <div class="container">
         <h2 class="section-title">Our Services</h2>
@@ -442,7 +423,6 @@ function renderHome() {
   `;
   attachListeners();
 }
-
 function renderHotels() {
   app.innerHTML = `
     ${renderNavbar()}
@@ -452,7 +432,7 @@ function renderHotels() {
       <div class="grid">
         ${content.hotels.items.map(h => `
           <div class="card glass" style="display: flex; flex-direction: column;">
-            <img src="${h.bg}" alt="${h.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;">
+            <img loading="lazy" decoding="async" src="${h.bg}" alt="${h.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;">
             <h2 style="font-size: 1.5rem;">${h.name}</h2>
             <p style="color: var(--secondary); font-weight: 600; margin: 0.5rem 0;">${h.price}</p>
             <p style="color: var(--text-muted); margin-bottom: 1rem; flex-grow: 1;">${h.desc}</p>
@@ -466,7 +446,6 @@ function renderHotels() {
   `;
   attachListeners();
 }
-
 function renderDestinations() {
   app.innerHTML = `
     ${renderNavbar()}
@@ -475,7 +454,7 @@ function renderDestinations() {
       <div class="grid">
         ${content.destinations.items.map(d => `
           <div class="card glass" style="display: flex; flex-direction: column;">
-            <img src="${d.bg}" alt="${d.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;">
+            <img loading="lazy" decoding="async" src="${d.bg}" alt="${d.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;">
             <h2>${d.name}</h2>
             <p style="color: var(--text-muted); margin: 1rem 0;">${d.desc}</p>
             <p style="font-size: 0.9rem; margin-bottom: 1rem; flex-grow: 1;"><strong>Highlights:</strong> ${d.highlight}</p>
@@ -488,7 +467,6 @@ function renderDestinations() {
   `;
   attachListeners();
 }
-
 function renderPackages() {
   app.innerHTML = `
     ${renderNavbar()}
@@ -497,7 +475,7 @@ function renderPackages() {
       <div class="grid">
         ${content.packages.items.map(p => `
           <div class="card glass" style="display: flex; flex-direction: column; height: 100%;">
-            <img src="${p.bg}" alt="${p.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;">
+            <img loading="lazy" decoding="async" src="${p.bg}" alt="${p.name}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;">
             <h2 style="flex-grow: 0;">${p.name}</h2>
             <p style="color: var(--text-muted); margin: 0.5rem 0;">${p.duration}</p>
             <div style="flex-grow: 1; padding: 1rem; background: rgba(0,0,0,0.2); border-radius: 0.5rem; margin-bottom: 1.5rem;">
@@ -514,7 +492,6 @@ function renderPackages() {
   `;
   attachListeners();
 }
-
 function renderModalContainer() {
   return `
     <div id="modal-root" class="modal-overlay" style="display: none;">
@@ -525,7 +502,6 @@ function renderModalContainer() {
     </div>
   `;
 }
-
 window.openPaymentModal = function(itemName) {
   const modalRoot = document.getElementById('modal-root');
   const modalBody = document.getElementById('modal-body');
@@ -533,39 +509,34 @@ window.openPaymentModal = function(itemName) {
     <div style="text-align: center; padding: 2rem;">
       <h2 style="color: var(--secondary); margin-bottom: 1rem;">Complete Your Booking</h2>
       <p style="margin-bottom: 2rem; color: var(--text-muted);">Scan this QR code with your PhonePe app to pay for <strong>${itemName}</strong></p>
-      <img src="/assets/qr.jpg" alt="PhonePe QR" style="width: 250px; border-radius: 1rem; border: 5px solid white; margin-bottom: 2rem;">
+      <img loading="lazy" decoding="async" src="/assets/qr.webp" alt="PhonePe QR" style="width: 250px; border-radius: 1rem; border: 5px solid white; margin-bottom: 2rem;">
       <p style="font-size: 0.9rem; color: var(--text-muted);">After scanning, please share the screenshot with us on email or phone.</p>
     </div>
   `;
   modalRoot.style.display = 'flex';
 }
-
 window.closeModal = function() {
   document.getElementById('modal-root').style.display = 'none';
 }
-
 function renderHotelDetail(id) {
   const hotel = content.hotels.items.find(h => h.id === id);
   if (!hotel) { navigate('/'); return; }
-
   app.innerHTML = `
     ${renderNavbar()}
     <section class="container" style="padding-top: 10rem;">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
         <div>
-          <img src="${hotel.bg}" alt="${hotel.name}" style="width: 100%; border-radius: 1rem; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+          <img loading="lazy" decoding="async" src="${hotel.bg}" alt="${hotel.name}" style="width: 100%; border-radius: 1rem; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
         </div>
         <div>
           <h1 style="font-size: 3rem; margin-bottom: 1rem;">${hotel.name}</h1>
           <p style="color: var(--text-muted); font-size: 1.2rem; margin-bottom: 2rem;">${hotel.desc}</p>
-          
           <div class="glass" style="padding: 2rem; margin-bottom: 2rem;">
             <h3 style="color: var(--secondary); margin-bottom: 1rem;">Amenities & Services ("The Menu")</h3>
             <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
               ${hotel.menu.map(m => `<li style="color: var(--text-muted);">✦ ${m}</li>`).join('')}
             </ul>
           </div>
-
           <div class="glass" style="padding: 2rem;">
             <h3 style="color: var(--secondary); margin-bottom: 1rem;">Exclusive Rates</h3>
             <div style="display: flex; gap: 2rem;">
@@ -577,7 +548,6 @@ function renderHotelDetail(id) {
               `).join('')}
             </div>
           </div>
-
           <button onclick="openPaymentModal('${hotel.name}')" class="btn" style="margin-top: 2rem; width: 100%; background: var(--accent); color: white; border: none; cursor: pointer;">Confirm Booking via PhonePe</button>
         </div>
       </div>
@@ -587,7 +557,6 @@ function renderHotelDetail(id) {
   `;
   attachListeners();
 }
-
 function renderBlog() {
   app.innerHTML = `
     ${renderNavbar()}
@@ -596,7 +565,7 @@ function renderBlog() {
       <div class="grid">
         ${content.blog.posts.map(p => `
           <div class="card glass" style="display: flex; flex-direction: column;">
-            <img src="${p.bg}" alt="${p.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;">
+            <img loading="lazy" decoding="async" src="${p.bg}" alt="${p.title}" style="width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; margin-bottom: 2rem;">
             <h3 style="flex-grow: 0;">${p.title}</h3>
             <p style="color: var(--text-muted); margin: 1rem 0; flex-grow: 1;">${p.summary}</p>
             <div id="content-${p.id}" class="blog-full-content" style="display: none; color: var(--text-muted); padding-top: 1.5rem; border-top: 1px solid var(--glass-border);">
@@ -616,8 +585,6 @@ function renderBlog() {
   `;
   attachListeners();
 }
-
-// Global toggle for blog posts
 window.toggleBlog = function(id) {
   const contentEl = document.getElementById('content-' + id);
   const btnEl = document.getElementById('btn-' + id);
@@ -629,7 +596,6 @@ window.toggleBlog = function(id) {
     btnEl.innerHTML = 'Read More &rarr;';
   }
 }
-
 function renderContact() {
   app.innerHTML = `
     ${renderNavbar()}
@@ -652,12 +618,10 @@ function renderContact() {
         <div>
           <h2>Our Office</h2>
           <p style="margin: 1.5rem 0; color: var(--text-muted);">${content.contact.address}</p>
-          
           <div class="satellite-view" style="width: 100%; height: 300px; border-radius: 1rem; overflow: hidden; margin-bottom: 2rem; border: 1px solid var(--glass-border); position: relative;">
-            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800" alt="Satellite view Mandapeta" style="width: 100%; height: 100%; object-fit: cover;">
+            <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?q=80&w=800" alt="Satellite view Mandapeta" style="width: 100%; height: 100%; object-fit: cover;">
             <div style="position: absolute; bottom: 1rem; left: 1rem; background: rgba(0,0,0,0.7); padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.75rem;">Satellite View: Mandapeta, AP</div>
           </div>
-
           <h3>Direct Contact</h3>
           <p style="color: var(--secondary); font-size: 1.5rem; margin-top: 1rem;"><a href="tel:${content.contact.phone.replace(/\s/g, '')}" style="color: inherit; text-decoration: none;">${content.contact.phone}</a></p>
           <p><a href="mailto:${content.contact.email}" style="color: var(--text-muted); text-decoration: none;">${content.contact.email}</a></p>
@@ -667,22 +631,18 @@ function renderContact() {
     ${renderFooter()}
   `;
   attachListeners();
-
   const form = document.getElementById('contact-form');
   const feedback = document.getElementById('form-feedback');
   const feedbackName = document.getElementById('feedback-name');
-
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = form.querySelector('button');
     const originalBtnText = btn.innerText;
     btn.innerText = "Sending...";
     btn.disabled = true;
-
     const name = document.getElementById('user-name').value;
     const email = document.getElementById('user-email').value;
     const message = document.getElementById('user-message').value;
-
     const templateParams = {
       from_name: name,
       user_name: name,
@@ -693,16 +653,11 @@ function renderContact() {
       message: message,
       staff_email: "hellocoastalescapes@gmail.com"
     };
-
-    // Send notification to staff
     emailjs.send(EMAILJS_CONFIG.CONTACT.SERVICE_ID, EMAILJS_CONFIG.CONTACT.TEMPLATE_STAFF, templateParams, EMAILJS_CONFIG.CONTACT.PUBLIC_KEY)
       .then(() => {
-        // Success: Show the 'Thank You' message immediately
         form.style.display = 'none';
         feedbackName.innerText = name;
         feedback.style.display = 'block';
-
-        // Background: Send auto-reply to user (don't block UI on error)
         emailjs.send(EMAILJS_CONFIG.CONTACT.SERVICE_ID, EMAILJS_CONFIG.CONTACT.TEMPLATE_AUTO, templateParams, EMAILJS_CONFIG.CONTACT.PUBLIC_KEY)
           .catch(err => console.error("Auto-reply configuration check:", err));
       })
@@ -718,7 +673,6 @@ function renderContact() {
       });
   });
 }
-
 function attachListeners() {
   document.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', e => {
@@ -730,18 +684,15 @@ function attachListeners() {
       }
     });
   });
-
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
   });
 }
-
 window.addEventListener('popstate', () => navigate(window.location.pathname));
 navigate(window.location.pathname);
 initChatbot();
-
 function initChatbot() {
   const chatContainer = document.createElement('div');
   chatContainer.innerHTML = `
@@ -763,7 +714,6 @@ function initChatbot() {
     </div>
   `;
   document.body.appendChild(chatContainer);
-
   const toggleBtn = document.getElementById('chatbot-toggle');
   const chatWindow = document.getElementById('chatbot-window');
   const closeBtn = document.getElementById('chatbot-close');
@@ -771,33 +721,26 @@ function initChatbot() {
   const chatInput = document.getElementById('chat-input');
   const sendBtn = document.getElementById('btn-send-chat');
   const voiceBtn = document.getElementById('btn-voice');
-
   let chatHistory = [];
   let isRecording = false;
-
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = SpeechRecognition ? new SpeechRecognition() : null;
-
   if (recognition) {
     recognition.continuous = false;
     recognition.interimResults = false;
     recognition.lang = 'en-US';
-
     recognition.onresult = (event) => {
       const transcript = event.results[0][0].transcript;
       chatInput.value = transcript;
       sendMessage();
     };
-
     recognition.onend = () => {
       isRecording = false;
       voiceBtn.classList.remove('listening');
     };
   }
-
   toggleBtn.addEventListener('click', () => chatWindow.classList.add('active'));
   closeBtn.addEventListener('click', () => chatWindow.classList.remove('active'));
-
   voiceBtn.addEventListener('click', () => {
     if (!recognition) {
       alert("Voice recognition is not supported in this browser.");
@@ -806,38 +749,27 @@ function initChatbot() {
     if (isRecording) {
       recognition.stop();
     } else {
-      // Auto-detect language based on previous context or defaults
       recognition.start();
       isRecording = true;
       voiceBtn.classList.add('listening');
     }
   });
-
   sendBtn.addEventListener('click', sendMessage);
   chatInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') sendMessage();
   });
-
   async function sendMessage() {
     const text = chatInput.value.trim();
     if (!text) return;
-
     appendMessage(text, 'user');
     chatInput.value = '';
-    
-    // Show loading for a bit of "thinking" realism
     const loadingId = appendLoading();
-    
     setTimeout(() => {
       removeElement(loadingId);
       const detection = detectLanguage(text);
       const response = generateLocalResponse(text, detection);
-      
-      // Update UI lang indicator
       document.getElementById('lang-indicator').innerText = `Detected Language: ${detection.toUpperCase()}`;
-      
       appendMessage(response.text, 'bot');
-
       if (response.action) {
         setTimeout(() => {
           navigate(response.action);
@@ -845,34 +777,23 @@ function initChatbot() {
       }
     }, 800);
   }
-
   function detectLanguage(input) {
-    // Basic regex for scripts
     const hindiRegex = /[\u0900-\u097F]/;
     const teluguRegex = /[\u0C00-\u0C7F]/;
-    
     if (hindiRegex.test(input)) return 'hi';
     if (teluguRegex.test(input)) return 'te';
-    
-    // Check for common keywords in transliteration
     const lowInput = input.toLowerCase();
     if (lowInput.includes("namaste") || lowInput.includes("kaise")) return 'hi';
     if (lowInput.includes("namaskaram") || lowInput.includes("ela unnavu")) return 'te';
-    
     return 'en';
   }
-
   function generateLocalResponse(input, lang = 'en') {
     const lowerInput = input.toLowerCase();
-
-    // 1. Check Profanity
     for (const word of PROFANITY_DB.words) {
       if (lowerInput.includes(word)) {
         return { text: PROFANITY_DB.polite_reply(word, lang) };
       }
     }
-
-    // 2. Check Navigation
     for (const key in AI_KNOWLEDGE) {
       if (AI_KNOWLEDGE[key].patterns) {
         if (AI_KNOWLEDGE[key].patterns.some(p => lowerInput.includes(p))) {
@@ -884,41 +805,31 @@ function initChatbot() {
         }
       }
     }
-
-    // 3. Check General Queries
     if (lowerInput.includes("joke") || lowerInput.includes("चुटकुल") || lowerInput.includes("జోక్")) {
       const jokes = AI_KNOWLEDGE.jokes[lang] || AI_KNOWLEDGE.jokes['en'];
       return { text: jokes[Math.floor(Math.random() * jokes.length)] };
     }
-    
     if (lowerInput.includes("who are you") || lowerInput.includes("नाम") || lowerInput.includes("పేరు")) {
       return { text: AI_KNOWLEDGE.who_are_you[lang] || AI_KNOWLEDGE.who_are_you['en'] };
     }
-
     if (lowerInput.includes("hi") || lowerInput.includes("hello") || lowerInput.includes("नमस्ते") || lowerInput.includes("నమస్తే")) {
       const greets = AI_KNOWLEDGE.greetings[lang] || AI_KNOWLEDGE.greetings['en'];
       return { text: greets[Math.floor(Math.random() * greets.length)] };
     }
-
-    // 4. Fallback
     return { text: AI_KNOWLEDGE.fallback[lang] || AI_KNOWLEDGE.fallback['en'] };
   }
-
   function appendMessage(text, sender) {
     const msgEl = document.createElement('div');
     msgEl.classList.add('chat-msg', sender === 'user' ? 'msg-user' : 'msg-bot');
-    
     let formattedText = text;
     if (sender === 'bot') {
         formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
                             .replace(/\n/g, '<br>');
     }
-    
     msgEl.innerHTML = formattedText;
     chatMessages.appendChild(msgEl);
     chatMessages.scrollTop = chatMessages.scrollHeight;
   }
-
   function appendLoading() {
     const id = 'loading-' + Date.now();
     const msgEl = document.createElement('div');
@@ -929,7 +840,6 @@ function initChatbot() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
     return id;
   }
-
   function removeElement(id) {
     const el = document.getElementById(id);
     if (el) el.remove();
@@ -943,7 +853,6 @@ function renderFeedback() {
       <p style="text-align: center; color: var(--text-muted); margin: -2rem auto 4rem; max-width: 600px;">
         Your detailed insights help us refine the Coastal Escapes luxury collection.
       </p>
-      
       <div id="feedback-container">
         <div class="feedback-box">
           <form id="feedback-form">
@@ -961,27 +870,22 @@ function renderFeedback() {
                 `).join('')}
               </div>
             </div>
-
             <div class="sig-input-group">
               <label class="sig-label">Full Name</label>
               <input type="text" id="fb-name" placeholder="Enter your name" required class="sig-input">
             </div>
-
             <div class="sig-input-group">
               <label class="sig-label">Email Address</label>
               <input type="email" id="fb-email" placeholder="email@address.com" required class="sig-input">
             </div>
-
             <div class="sig-input-group">
               <label class="sig-label">Your Feedback</label>
               <textarea id="fb-message" placeholder="Please share your thoughts on our hotels and packages..." rows="4" required class="sig-input" style="resize: none;"></textarea>
             </div>
-
             <button class="sig-button" type="submit" style="width: 100%;">SUBMIT FEEDBACK</button>
           </form>
         </div>
       </div>
-
       <div id="fb-success-root" style="display: none;" class="bloom-container">
         <div class="bloom-text">
           Thank U For Your <br> Valuable Feedback
@@ -995,26 +899,20 @@ function renderFeedback() {
     ${renderFooter()}
   `;
   attachListeners();
-  
   const form = document.getElementById('feedback-form');
   const container = document.getElementById('feedback-container');
   const successRoot = document.getElementById('fb-success-root');
-
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    
-    // OPTIMISTIC UI: Show success instantly
     container.style.opacity = '0';
     setTimeout(() => {
       container.style.display = 'none';
       successRoot.style.display = 'flex';
     }, 400);
-
     const rating = form.querySelector('input[name="rating"]:checked').value;
     const name = document.getElementById('fb-name').value;
     const email = document.getElementById('fb-email').value;
     const message = document.getElementById('fb-message').value;
-
     const templateParams = {
       from_name: name,
       user_email: email,
@@ -1023,13 +921,11 @@ function renderFeedback() {
       subject: `[Professional Feedback] ${rating}/5 Stars`,
       to_email: "hellocoastalescapes@gmail.com"
     };
-
     emailjs.send(EMAILJS_CONFIG.FEEDBACK.SERVICE_ID, EMAILJS_CONFIG.FEEDBACK.TEMPLATE, templateParams, EMAILJS_CONFIG.FEEDBACK.PUBLIC_KEY)
       .then(res => console.log("Feedback Sent Successfully:", res))
       .catch(err => console.error("EmailJS Sync failed:", err));
   });
 }
-
 function initProactiveFeedback() {
   const toast = document.createElement('div');
   toast.className = 'proactive-toast';
@@ -1050,29 +946,20 @@ function initProactiveFeedback() {
     </div>
   `;
   document.body.appendChild(toast);
-
   const rateBtn = document.getElementById('btn-rate-now');
   const closeBtn = document.getElementById('btn-toast-close');
-
   rateBtn.addEventListener('click', () => {
     window.navigate('/feedback');
     toast.classList.remove('active');
   });
-
   closeBtn.addEventListener('click', () => {
     toast.classList.remove('active');
   });
-
-  // Trigger immediately as the site opens
   setTimeout(() => {
     if (window.location.pathname !== '/feedback') {
       toast.classList.add('active');
     }
   }, 100);
 }
-
-// Make navigate globally accessible
 window.navigate = navigate;
-
-// Call proactive init
 initProactiveFeedback();

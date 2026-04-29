@@ -1,17 +1,15 @@
 {
   "redirects": [
     {
-      "source": "/hotels",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/home",
+      "source": "/old-home",
       "destination": "/",
       "permanent": true
     }
   ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
   ]
 }
