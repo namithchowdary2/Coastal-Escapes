@@ -26,7 +26,7 @@ const content = {
       title: "Namith Chowdary",
       subtitle: "Founder & Lead Explorer",
       bio: "Coastal Escapes was born from a passion for discovering the hidden soul of India. As a lifestyle explorer and storyteller, I believe that travel is more than just visiting a place—it's about the pulse of the destination, the culture, and the memories that linger long after the journey ends. Join me as we explore the sun-kissed coasts and majestic mountains of our beautiful nation.",
-      image: "/assets/namith.png",
+      image: "/assets/professional_founder.png",
       signature: "Namith Chowdary"
     },
     seo: "Explore the best travel booking platform for hotels in Goa and customized tour packages in India. Coastal Escapes helps travelers find affordable hotels in Goa, premium resorts, and curated travel experiences.",
