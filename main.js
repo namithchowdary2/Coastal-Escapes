@@ -281,6 +281,16 @@ const PROFANITY_DB = {
 const app = document.getElementById('app');
 function navigate(page) {
   window.scrollTo(0, 0);
+  
+  // Update Canonical Tag dynamically for SEO
+  let canonical = document.querySelector('link[rel="canonical"]');
+  if (!canonical) {
+    canonical = document.createElement('link');
+    canonical.setAttribute('rel', 'canonical');
+    document.head.appendChild(canonical);
+  }
+  // Remove trailing slash for consistency if needed, but here we just append the page path
+  canonical.setAttribute('href', window.location.origin + (page === '/' ? '' : page));
   if (page.startsWith('/hotel/')) {
     const id = page.split('/').pop();
     renderHotelDetail(id);
