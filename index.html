@@ -160,14 +160,24 @@
   </nav>
   <div id="app"></div>
   <style>
-    /* Force interactivity on feedback elements */
-    .feedback-box, .sig-input, .star-label {
+    /* Force interactivity on all form elements */
+    .feedback-box, .sig-input-group, .sig-input, .star-label, .sig-button {
       pointer-events: auto !important;
-      z-index: 10 !important;
+      position: relative !important;
+      z-index: 100 !important;
     }
-    /* Ensure typing cursor is visible */
+    /* Ensure typing is possible and visible */
     .sig-input {
       cursor: text !important;
+      color: #ffffff !important;
+      background: rgba(30, 30, 30, 0.9) !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    /* Fix layout of star widget */
+    .rating-widget {
+      margin: 2rem 0 !important;
+      display: flex !important;
     }
   </style>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
