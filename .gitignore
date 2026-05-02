@@ -29,4 +29,5 @@ lpu_logo.svg
 *.cjs
 *.txt
 *.md
+!robots.txt
 !README.md
