@@ -960,6 +960,12 @@ function renderFeedback() {
   const successRoot = document.getElementById('fb-success-root');
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+
+    if (typeof emailjs === 'undefined') {
+      alert("Email service is still loading. Please wait a few seconds and try again.");
+      return;
+    }
+
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalBtnText = submitBtn.innerText;
     
@@ -967,27 +973,40 @@ function renderFeedback() {
     submitBtn.innerText = "SENDING...";
     submitBtn.disabled = true;
 
-    const rating = form.querySelector('input[name="rating"]:checked').value;
-    const name = document.getElementById('fb-name').value;
-    const email = document.getElementById('fb-email').value;
-    const message = document.getElementById('fb-message').value;
+    try {
+      const ratingInput = form.querySelector('input[name="rating"]:checked');
+      if (!ratingInput) {
+        alert("Please select a rating before submitting.");
+        submitBtn.innerText = originalBtnText;
+        submitBtn.disabled = false;
+        return;
+      }
+      
+      const rating = ratingInput.value;
+      const name = document.getElementById('fb-name').value;
+      const email = document.getElementById('fb-email').value;
+      const message = document.getElementById('fb-message').value;
 
-    const templateParams = {
-      from_name: name,
-      user_name: name,
-      user_email: email,
-      reply_to: email,
-      rating: rating,
-      message: message,
-      subject: `[Coastal Escapes Feedback] ${rating}/5 Stars from ${name}`,
-      to_email: "hellocoastalescapes@gmail.com",
-      staff_email: "hellocoastalescapes@gmail.com"
-    };
+      const templateParams = {
+        from_name: name,
+        user_name: name,
+        user_email: email,
+        reply_to: email,
+        rating: rating,
+        message: message,
+        subject: `[Coastal Escapes Feedback] ${rating}/5 Stars from ${name}`,
+        to_email: "hellocoastalescapes@gmail.com",
+        staff_email: "hellocoastalescapes@gmail.com"
+      };
 
-    emailjs.send(EMAILJS_CONFIG.FEEDBACK.SERVICE_ID, EMAILJS_CONFIG.FEEDBACK.TEMPLATE, templateParams, EMAILJS_CONFIG.FEEDBACK.PUBLIC_KEY)
+      emailjs.send(
+        EMAILJS_CONFIG.FEEDBACK.SERVICE_ID, 
+        EMAILJS_CONFIG.FEEDBACK.TEMPLATE, 
+        templateParams, 
+        EMAILJS_CONFIG.FEEDBACK.PUBLIC_KEY
+      )
       .then(res => {
         console.log("Feedback Sent Successfully:", res);
-        // Animate success transition
         container.style.opacity = '0';
         setTimeout(() => {
           container.style.display = 'none';
@@ -995,11 +1014,17 @@ function renderFeedback() {
         }, 400);
       })
       .catch(err => {
-        console.error("EmailJS Feedback failed:", err);
-        submitBtn.innerText = "ERROR! TRY AGAIN";
+        console.error("EmailJS Feedback error:", err);
+        submitBtn.innerText = "ERROR: " + (err.text || "Check Settings");
         submitBtn.disabled = false;
-        setTimeout(() => { submitBtn.innerText = originalBtnText; }, 3000);
+        setTimeout(() => { submitBtn.innerText = originalBtnText; }, 5000);
       });
+    } catch (err) {
+      console.error("Submission logic error:", err);
+      submitBtn.innerText = "CLIENT ERROR";
+      submitBtn.disabled = false;
+      setTimeout(() => { submitBtn.innerText = originalBtnText; }, 3000);
+    }
   });
 }
 function initProactiveFeedback() {
