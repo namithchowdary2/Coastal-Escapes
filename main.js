@@ -958,6 +958,8 @@ function renderFeedback() {
   const form = document.getElementById('feedback-form');
   const container = document.getElementById('feedback-container');
   const successRoot = document.getElementById('fb-success-root');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
     const submitBtn = form.querySelector('button[type="submit"]');
     const originalBtnText = submitBtn.innerText;
     
