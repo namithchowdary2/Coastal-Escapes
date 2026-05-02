@@ -159,6 +159,17 @@
     </ul>
   </nav>
   <div id="app"></div>
+  <style>
+    /* Force interactivity on feedback elements */
+    .feedback-box, .sig-input, .star-label {
+      pointer-events: auto !important;
+      z-index: 10 !important;
+    }
+    /* Ensure typing cursor is visible */
+    .sig-input {
+      cursor: text !important;
+    }
+  </style>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
   <script type="module" src="/main.js"></script>
 </body>

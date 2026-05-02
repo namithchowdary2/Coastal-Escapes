@@ -741,10 +741,12 @@ function attachListeners() {
   }
   
   const nav = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) nav.classList.add('scrolled');
-    else nav.classList.remove('scrolled');
-  });
+  if (nav) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  }
 }
 window.addEventListener('popstate', () => navigate(window.location.pathname));
 navigate(window.location.pathname);
