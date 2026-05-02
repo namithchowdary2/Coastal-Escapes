@@ -958,28 +958,44 @@ function renderFeedback() {
   const form = document.getElementById('feedback-form');
   const container = document.getElementById('feedback-container');
   const successRoot = document.getElementById('fb-success-root');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    container.style.opacity = '0';
-    setTimeout(() => {
-      container.style.display = 'none';
-      successRoot.style.display = 'flex';
-    }, 400);
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalBtnText = submitBtn.innerText;
+    
+    // Show sending state
+    submitBtn.innerText = "SENDING...";
+    submitBtn.disabled = true;
+
     const rating = form.querySelector('input[name="rating"]:checked').value;
     const name = document.getElementById('fb-name').value;
     const email = document.getElementById('fb-email').value;
     const message = document.getElementById('fb-message').value;
+
     const templateParams = {
       from_name: name,
+      user_name: name,
       user_email: email,
       rating: rating,
       message: message,
-      subject: `[Professional Feedback] ${rating}/5 Stars`,
+      subject: `[Coastal Escapes Feedback] ${rating}/5 Stars from ${name}`,
       to_email: "hellocoastalescapes@gmail.com"
     };
+
     emailjs.send(EMAILJS_CONFIG.FEEDBACK.SERVICE_ID, EMAILJS_CONFIG.FEEDBACK.TEMPLATE, templateParams, EMAILJS_CONFIG.FEEDBACK.PUBLIC_KEY)
-      .then(res => console.log("Feedback Sent Successfully:", res))
-      .catch(err => console.error("EmailJS Sync failed:", err));
+      .then(res => {
+        console.log("Feedback Sent Successfully:", res);
+        // Animate success transition
+        container.style.opacity = '0';
+        setTimeout(() => {
+          container.style.display = 'none';
+          successRoot.style.display = 'flex';
+        }, 400);
+      })
+      .catch(err => {
+        console.error("EmailJS Feedback failed:", err);
+        submitBtn.innerText = "ERROR! TRY AGAIN";
+        submitBtn.disabled = false;
+        setTimeout(() => { submitBtn.innerText = originalBtnText; }, 3000);
+      });
   });
 }
 function initProactiveFeedback() {
