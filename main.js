@@ -974,10 +974,12 @@ function renderFeedback() {
       from_name: name,
       user_name: name,
       user_email: email,
+      reply_to: email,
       rating: rating,
       message: message,
       subject: `[Coastal Escapes Feedback] ${rating}/5 Stars from ${name}`,
-      to_email: "hellocoastalescapes@gmail.com"
+      to_email: "hellocoastalescapes@gmail.com",
+      staff_email: "hellocoastalescapes@gmail.com"
     };
 
     emailjs.send(EMAILJS_CONFIG.FEEDBACK.SERVICE_ID, EMAILJS_CONFIG.FEEDBACK.TEMPLATE, templateParams, EMAILJS_CONFIG.FEEDBACK.PUBLIC_KEY)
