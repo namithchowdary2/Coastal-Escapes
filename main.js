@@ -300,7 +300,7 @@ function navigate(page) {
 function renderNavbar() {
   return `
     <nav id="navbar">
-      <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; padding: 0 2rem;">
         <a href="/" class="logo">
           <div class="logo-icon">CE</div>
           <div class="logo-text">
@@ -308,6 +308,7 @@ function renderNavbar() {
             <span>Escapes</span>
           </div>
         </a>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle" style="display: none; background: none; border: none; color: white; font-size: 1.8rem; cursor: pointer;">☰</button>
         <ul class="nav-links nav-list">
           <li><a href="/">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -319,6 +320,18 @@ function renderNavbar() {
         </ul>
       </div>
     </nav>
+  `;
+}
+
+function renderBreadcrumb(items) {
+  if (!items || items.length === 0) return '';
+  return `
+    <div class="breadcrumb" style="padding-top: 2rem;">
+      ${items.map((item, idx) => `
+        ${idx > 0 ? '<span class="breadcrumb-separator">/</span>' : ''}
+        ${item.link ? `<a href="${item.link}">${item.name}</a>` : `<span>${item.name}</span>`}
+      `).join('')}
+    </div>
   `;
 }
 function renderFooter() {
@@ -427,6 +440,10 @@ function renderHotels() {
   app.innerHTML = `
     ${renderNavbar()}
     <section class="container" style="padding-top: 10rem;">
+      ${renderBreadcrumb([
+        { name: 'Home', link: '/' },
+        { name: 'Hotels', link: '/hotels' }
+      ])}
       <h1 class="section-title">${content.hotels.title}</h1>
       <p style="text-align: center; max-width: 600px; margin: -2rem auto 4rem; color: var(--text-muted);">${content.hotels.seo}</p>
       <div class="grid">
@@ -450,6 +467,10 @@ function renderDestinations() {
   app.innerHTML = `
     ${renderNavbar()}
     <section class="container" style="padding-top: 10rem;">
+      ${renderBreadcrumb([
+        { name: 'Home', link: '/' },
+        { name: 'Destinations', link: '/destinations' }
+      ])}
       <h1 class="section-title">${content.destinations.title}</h1>
       <div class="grid">
         ${content.destinations.items.map(d => `
@@ -471,6 +492,10 @@ function renderPackages() {
   app.innerHTML = `
     ${renderNavbar()}
     <section class="container" style="padding-top: 10rem;">
+      ${renderBreadcrumb([
+        { name: 'Home', link: '/' },
+        { name: 'Packages', link: '/packages' }
+      ])}
       <h1 class="section-title">${content.packages.title}</h1>
       <div class="grid">
         ${content.packages.items.map(p => `
@@ -684,6 +709,37 @@ function attachListeners() {
       }
     });
   });
+  
+  // Mobile menu toggle
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (mobileMenuToggle && navLinks) {
+    // Show/hide mobile menu toggle based on screen size
+    const toggleMobileMenu = () => {
+      if (window.innerWidth <= 768) {
+        mobileMenuToggle.style.display = 'block';
+      } else {
+        mobileMenuToggle.style.display = 'none';
+        navLinks.classList.remove('active');
+      }
+    };
+    
+    toggleMobileMenu();
+    window.addEventListener('resize', toggleMobileMenu);
+    
+    mobileMenuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+    
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+  }
+  
   const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) nav.classList.add('scrolled');
