@@ -1,65 +1,40 @@
-This XML file does not appear to have any style information associated with it. The document tree is shown below.
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-<url>
-<loc>https://coastal-escapes-six.vercel.app/</loc>
-<lastmod>2026-05-02</lastmod>
-<changefreq>weekly</changefreq>
-<priority>1.0</priority>
-<image:image>
-<image:loc>https://coastal-escapes-six.vercel.app/assets/hero.webp</image:loc>
-<image:title>Coastal Escapes Hero</image:title>
-</image:image>
-</url>
-<url>
-<loc>https://coastal-escapes-six.vercel.app/destinations</loc>
-<lastmod>2026-05-02</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://coastal-escapes-six.vercel.app/hotels</loc>
-<lastmod>2026-05-02</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://coastal-escapes-six.vercel.app/packages</loc>
-<lastmod>2026-05-02</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.85</priority>
-</url>
-<url>
-<loc>https://coastal-escapes-six.vercel.app/blog</loc>
-<lastmod>2026-05-02</lastmod>
-<changefreq>weekly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://coastal-escapes-six.vercel.app/contact</loc>
-<lastmod>2026-05-02</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://coastal-escapes-six.vercel.app/hotel/azure-palms</loc>
-<lastmod>2026-05-02</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-<image:image>
-<image:loc>https://coastal-escapes-six.vercel.app/assets/hotel_luxury.webp</image:loc>
-<image:title>Azure Palms Resort Goa</image:title>
-</image:image>
-</url>
-<url>
-<loc>https://coastal-escapes-six.vercel.app/hotel/heritage-inn</loc>
-<lastmod>2026-05-02</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://coastal-escapes-six.vercel.app/hotel/royal-haveli</loc>
-<lastmod>2026-05-02</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://coastal-escapes-six.vercel.app/</loc>
+  </url>
+
+  <url>
+    <loc>https://coastal-escapes-six.vercel.app/destinations</loc>
+  </url>
+
+  <url>
+    <loc>https://coastal-escapes-six.vercel.app/hotels</loc>
+  </url>
+
+  <url>
+    <loc>https://coastal-escapes-six.vercel.app/packages</loc>
+  </url>
+
+  <url>
+    <loc>https://coastal-escapes-six.vercel.app/blog</loc>
+  </url>
+
+  <url>
+    <loc>https://coastal-escapes-six.vercel.app/contact</loc>
+  </url>
+
+  <url>
+    <loc>https://coastal-escapes-six.vercel.app/hotel/azure-palms</loc>
+  </url>
+
+  <url>
+    <loc>https://coastal-escapes-six.vercel.app/hotel/heritage-inn</loc>
+  </url>
+
+  <url>
+    <loc>https://coastal-escapes-six.vercel.app/hotel/royal-haveli</loc>
+  </url>
+
 </urlset>
